@@ -5,11 +5,11 @@ import Header from './Header'
 import NewAd from './NewAd'
 import Index from './Index'
 import AdsList from './AdsList'
-import SingleAd from './SingleAd'
+//import SingleAd from './SingleAd'
 import Login from './Login'
 import Register from './Register'
 import Home from './Home'
-import Forgot from './forgot'
+import Forgot from './Forgot'
 import Reset from './Reset'
 
 
@@ -23,7 +23,6 @@ class App extends Component {
             <Route exact path='/' component={Index} />
             <Route path='/ads' component={AdsList} />
             <Route path='/create' component={NewAd} />
-            <Route path='/:id' component={SingleAd} />
             <Route path='/login' component={Login} />
             <Route path='/register' component={Register} />
             <Route path='/home' component={Home} />
@@ -35,5 +34,5 @@ class App extends Component {
     )
   }
 }
-
+// <Route path='/:id' component={SingleAd} />
 ReactDOM.render(<App />, document.getElementById('app'))

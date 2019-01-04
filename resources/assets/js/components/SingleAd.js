@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 
 class SingleAd extends Component {
   constructor(props) {
@@ -17,9 +18,7 @@ class SingleAd extends Component {
     this.handleAddNewBid = this.handleAddNewBid.bind(this)
     this.hasErrorFor = this.hasErrorFor.bind(this)
     this.renderErrorFor = this.renderErrorFor.bind(this)
-    /*this.handleMarkProjectAsCompleted = this.handleMarkProjectAsCompleted.bind(
-      this
-    )*/
+
   }
 
   componentDidMount() {
@@ -49,14 +48,14 @@ class SingleAd extends Component {
     }
 
     axios
-      .post('/api/bids', task)
+      .post('/api/bids', bid)
       .then(response => {
         // clear form input
         this.setState({
           price: ''
         })
 
-        // add new task to list of tasks
+        // add new task to list of bids
         this.setState(prevState => ({
           tasks: prevState.bids.concat(response.data)
         }))
@@ -82,25 +81,6 @@ class SingleAd extends Component {
     }
   }
 
-  /*handleMarkProjectAsCompleted() {
-    const { history } = this.props
-
-    axios
-      .put(`/api/projects/${this.state.project.id}`)
-      .then(response => history.push('/'))
-  }*/
-
-  /*
-  handleMarkTaskAsCompleted(taskId) {
-    axios.put(`/api/tasks/${taskId}`).then(response => {
-      this.setState(prevState => ({
-        tasks: prevState.tasks.filter(task => {
-          return task.id !== taskId
-        })
-      }))
-    })
-  }*/
-
   render() {
     const { ad, bids } = this.state
 
@@ -116,9 +96,9 @@ class SingleAd extends Component {
 
                 <button
                   className='btn btn-primary btn-sm'
-                //onClick={this.handleMarkProjectAsCompleted}
+                //onClick={this.handleRemoveBid}
                 >
-                  Press button
+                  Remove Bid
                 </button>
 
                 <hr />
@@ -152,12 +132,12 @@ class SingleAd extends Component {
 
                       <button
                         className='btn btn-primary btn-sm'
-                      /*onClick={this.handleMarkTaskAsCompleted.bind(
+                      /*onClick={this.handleRemoveBid(
                         this,
                         bid.id
                       )}*/
                       >
-                        Press button
+                        Remove Bid
                       </button>
                     </li>
                   ))}

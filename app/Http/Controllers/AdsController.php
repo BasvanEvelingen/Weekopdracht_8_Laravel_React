@@ -18,16 +18,6 @@ class AdsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -35,7 +25,18 @@ class AdsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'product_name' => 'required',
+            'product_description' => 'required',
+            'price' => 'required',
+        ]);
+
+        $project = Project::create([
+            'product_name' => $validatedData['product_name'],
+            'product_description' => $validatedData['product_description'],
+        ]);
+
+        return response()->json('Ad created!');
     }
 
     /**
@@ -46,39 +47,7 @@ class AdsController extends Controller
      */
     public function show($id)
     {
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $ad = Ad::find($id);
+        return $ad->toJson();
     }
 }

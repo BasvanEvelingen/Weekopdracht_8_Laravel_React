@@ -39,8 +39,6 @@ class Login extends Component {
     }
 
     render() {
-
-        console.log("hier wel?")
         let error = this.state.err;
         let msg = (!error) ? 'Login Successful' : 'Wrong Credentials';
         let name = (!error) ? 'alert alert-success' : 'alert alert-danger';

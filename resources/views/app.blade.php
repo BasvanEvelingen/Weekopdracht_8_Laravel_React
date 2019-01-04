@@ -24,9 +24,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
 <!-- Custom CSS -->
-<link rel="stylesheet" type="text/css" href="/webshop/vendors/css/normalize.css">
+
 <link rel="stylesheet" type="text/css" href="{{URL::asset('css/app.css')}}">
-<link rel="stylesheet" type="text/css" href="/webshop/public/css/queries.css">
+
 
 </head>
 <body>

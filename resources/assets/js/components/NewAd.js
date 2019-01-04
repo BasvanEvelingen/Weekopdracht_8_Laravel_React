@@ -28,7 +28,7 @@ class NewAd extends Component {
 
         const { history } = this.props
 
-        const project = {
+        const ad = {
             product_name: this.state.product_name,
             product_description: this.state.product_description
         }

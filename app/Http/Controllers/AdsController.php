@@ -13,7 +13,8 @@ class AdsController extends Controller
      */
     public function index()
     {
-
+        $ads = Ad::all();
+        return $ads->toJson();
     }
 
     /**
@@ -45,7 +46,6 @@ class AdsController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**

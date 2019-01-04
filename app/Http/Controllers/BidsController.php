@@ -34,7 +34,14 @@ class BidsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate(['price' => 'required']);
+        $bid = Bid::create([
+            'price' => $validatedData['price'],
+            'ad_id' => $request->ad_id,
+            'user_id' => $request->user_id,
+        ]);
+
+        return $task->toJson();
     }
 
     /**

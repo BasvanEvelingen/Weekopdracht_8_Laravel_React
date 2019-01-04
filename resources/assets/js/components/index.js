@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
-import Nav from './navbar'
+import Nav from './/Navbar'
 
 
 class Index extends Component {
 
   render() {
     return (
-       <div> 
-          <Nav />       
-          <div className="container text-center  title">
-               <h1>Laravel + React 	Basic Authentication </h1>
-        </div> 
-       </div>   
+      <div>
+        <Nav />
+        <div className="container text-center  title">
+          <h1>e_bid main page</h1>
+        </div>
+      </div>
     )
   }
 

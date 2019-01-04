@@ -1,49 +1,50 @@
 import React, { Component } from 'react'
-import Nav from './navbar'
+import Nav from './Navbar'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 
 class Login extends Component {
-    
-     constructor(props){
+
+    constructor(props) {
         super(props);
         this.state = {
-            email : '',
+            email: '',
             password: '',
         }
-     }
+    }
 
-     onSubmit(e){
+    onSubmit(e) {
         e.preventDefault();
-        const {email , password} = this.state ;
+        const { email, password } = this.state;
         axios.post('api/login', {
-            email, 
+            email,
             password
-          })
-          .then(response=> {
-            this.setState({err: false});
-            this.props.history.push("home") ;
-            
-          })
-          .catch(error=> {
-            this.refs.email.value="";
-            this.refs.password.value="";
-            this.setState({err: true});
-          });
-     }
+        })
+            .then(response => {
+                this.setState({ err: false });
+                this.props.history.push("home");
 
-     onChange(e){
-        const {name, value} = e.target;
-        this.setState({[name]: value});
-     }
+            })
+            .catch(error => {
+                this.refs.email.value = "";
+                this.refs.password.value = "";
+                this.setState({ err: true });
+            });
+    }
 
-	render() {
-        
-        let error = this.state.err ;
-        let msg = (!error) ? 'Login Successful' : 'Wrong Credentials' ;
-        let name = (!error) ? 'alert alert-success' : 'alert alert-danger' ;
-	    return (
+    onChange(e) {
+        const { name, value } = e.target;
+        this.setState({ [name]: value });
+    }
+
+    render() {
+
+        console.log("hier wel?")
+        let error = this.state.err;
+        let msg = (!error) ? 'Login Successful' : 'Wrong Credentials';
+        let name = (!error) ? 'alert alert-success' : 'alert alert-danger';
+        return (
             <div >
                 <Nav />
                 <div className="container-fluid">
@@ -51,16 +52,16 @@ class Login extends Component {
                         <div className="col-md-8 col-md-offset-2">
                             <div className="panel panel-default">
                                 <div className="panel-heading">Login</div>
-                                <div className="panel-body">   
+                                <div className="panel-body">
                                     <div className="col-md-offset-2 col-md-8 col-md-offset-2">
                                         {error != undefined && <div className={name} role="alert">{msg}</div>}
-                                    </div>  
-                                    <form className="form-horizontal" role="form" method="POST" onSubmit= {this.onSubmit.bind(this)}>
+                                    </div>
+                                    <form className="form-horizontal" role="form" method="POST" onSubmit={this.onSubmit.bind(this)}>
                                         <div className="form-group">
                                             <label for="email" className="col-md-4 control-label">E-Mail Address</label>
 
                                             <div className="col-md-6">
-                                                <input id="email" type="email" ref="email" className="form-control" name="email"  onChange={this.onChange.bind(this)} required />
+                                                <input id="email" type="email" ref="email" className="form-control" name="email" onChange={this.onChange.bind(this)} required />
                                             </div>
                                         </div>
 
@@ -68,7 +69,7 @@ class Login extends Component {
                                             <label for="password" className="col-md-4 control-label">Password</label>
 
                                             <div className="col-md-6">
-                                                <input id="password" type="password" ref="password" className="form-control" name="password"  onChange={this.onChange.bind(this)}  required />
+                                                <input id="password" type="password" ref="password" className="form-control" name="password" onChange={this.onChange.bind(this)} required />
                                             </div>
                                         </div>
 
@@ -89,7 +90,7 @@ class Login extends Component {
                                                 </button>
 
                                                 <li className="btn btn-link">
-                                                    <Link to = "forgotpassword">Forgot Your Password?</Link>
+                                                    <Link to="forgotpassword">Forgot Your Password?</Link>
                                                 </li>
                                             </div>
                                         </div>
@@ -100,10 +101,9 @@ class Login extends Component {
                     </div>
                 </div>
             </div>
-           
-	);
-}
+
+        );
+    }
 }
 
 export default Login;
-
